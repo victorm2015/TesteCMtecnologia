@@ -1,76 +1,49 @@
 package desafios;
 
+import java.util.Scanner;
+
 public class MatrizDiagonal {
-	private static final String v = null;
 
-	public static void main(String[] args) {
-		
-	       int linhas = 3;
-	       int colunas = 3;
-	       
-	       System.out.println("Exercicio 1\n");
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double saldo = 0;
 
-	        int[][] matriz = new int[linhas][colunas];
+        while (true) {
+            System.out.println("Selecione uma opção:");
+            System.out.println("1 - Registrar entrada de valor");
+            System.out.println("2 - Registrar saída de valor");
+            System.out.println("3 - Verificar saldo");
+            System.out.println("0 - Sair");
 
-	        matriz[0][0] = 1;
-	        matriz[0][1] = 2;
-	        matriz[0][2] = 3;
-	        matriz[1][0] = 4;
-	        matriz[1][1] = 5;
-	        matriz[1][2] = 6;
-	        matriz[2][0] = 7;
-	        matriz[2][1] = 8;
-	        matriz[2][2] = 9;
-	        	        
-	        // Matriz normal
-	        System.out.println("Matriz: \n");
-	        for (int l = 0; l < linhas; l++) {
-	            for (int c = 0; c < colunas; c++) {
-	                System.out.print(matriz[l][c] + " ");
-	            }
-	            
-	            System.out.println();
-	            
-	        }
-	        
-	        inverter(matriz);
-
-	        System.out.println("\nMatriz com diagonais invertidas:\n");
-	        imprimirMatriz(matriz);
-	        
-	        }	        
-	      
-	        public static void inverter(int[][] matriz) {
-	            int t = matriz.length;
-
-	            // Diagonal principal inverter
-	            for (int l = 0; l < t / 2; l++) {
-	                int temp = matriz[l][l];
-	                matriz[l][l] = matriz[t - 1 - l][t - 1 - l];
-	                matriz[t - 1 - l][t - 1 - l] = temp;
-	            }
-
-	            // Diagonal secundária inverter
-	            for (int l = 0; l < t / 2; l++) {
-	                int temp = matriz[l][t - 1 - l];
-	                matriz[l][t - 1 - l] = matriz[t - 1 - l][l];
-	                matriz[t - 1 - l][l] = temp;
-	            }
-	        
-	}
-	        
-	        public static void imprimirMatriz(int[][] matriz) {
-	            int tamanho = matriz.length;
-
-	            for (int i = 0; i < tamanho; i++) {
-	                for (int j = 0; j < tamanho; j++) {
-	                    System.out.print(matriz[i][j] + " ");
-	                }
-	                System.out.println();
-	            }
-	            System.out.println();
-	        }
+            int opcao = scanner.nextInt();
+            switch (opcao) {
+                case 1:
+                    System.out.print("Digite o valor de entrada: ");
+                    double entrada = scanner.nextDouble();
+                    saldo += entrada;
+                    System.out.println("Entrada registrada: R$" + entrada);
+                    break;
+                case 2:
+                    System.out.print("Digite o valor de saída: ");
+                    double saida = scanner.nextDouble();
+                    if (saida > saldo) {
+                        System.out.println("Saldo insuficiente!");
+                    } else {
+                        saldo -= saida;
+                        System.out.println("Saída registrada: R$" + saida);
+                    }
+                    break;
+                case 3:
+                    System.out.println("Saldo atual: R$" + saldo);
+                    break;
+                case 0:
+                    System.out.println("Saindo do programa...");
+                    scanner.close();
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        }
+    }
 }
-
-
-

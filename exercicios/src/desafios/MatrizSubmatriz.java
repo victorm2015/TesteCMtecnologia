@@ -61,7 +61,7 @@ public class MatrizSubmatriz {
 	        System.out.println("A submatriz B ocorre " + contagem + " vezes na matriz A!");
 	        }
 	    }
-
+	
 	    public static int contarSubmatriz(int[][] matrizA, int[][] submatrizB) {
 	        int ocorrencias = 0;
 	        int linhasA = matrizA.length;
@@ -92,7 +92,9 @@ public class MatrizSubmatriz {
 	            }
 	        }
 
-	        return true;	        
+	        return true;
+	        
 	}
+		
 
 }
